@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "@types/express": "^4.17.11",
+    "@types/jasmine": "^3.6.9",
+    "@types/node": "^14.14.39",
+    "@types/typescript": "^2.0.0",
+    "eslint": "^7.24.0",
+    "express": "^4.17.1",
+    "jasmine": "^3.7.0",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
+  },
+  "name": "imageprocessingapi",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniel-M-Kelly/imageProcessingAPI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daniel-M-Kelly/imageProcessingAPI/issues"
+  },
+  "homepage": "https://github.com/Daniel-M-Kelly/imageProcessingAPI#readme"
+}
