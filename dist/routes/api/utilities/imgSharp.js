@@ -39,21 +39,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var supertest_1 = __importDefault(require("supertest"));
-var index_1 = __importDefault(require("../index"));
-var request = supertest_1.default(index_1.default);
-describe('Check Express Server', function () {
-    it('Check server runs', function (done) { return __awaiter(void 0, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('http://localhost:3000/')];
-                case 1:
-                    response = _a.sent();
-                    expect(response.status).toBe(200);
-                    done();
-                    return [2 /*return*/];
-            }
-        });
-    }); });
-});
+var sharp_1 = __importDefault(require("sharp"));
+var imgSharp = function (imgPath, thumbPath, imgWidth, imgHeight) { return __awaiter(void 0, void 0, void 0, function () {
+    var width, height, err_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                width = parseInt(imgWidth);
+                height = parseInt(imgHeight);
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, sharp_1.default(imgPath).resize(width, height).toFile(thumbPath)];
+            case 2:
+                _a.sent();
+                console.log('File Successfully resized and cached!');
+                return [3 /*break*/, 4];
+            case 3:
+                err_1 = _a.sent();
+                console.log(err_1);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); };
+exports.default = imgSharp;

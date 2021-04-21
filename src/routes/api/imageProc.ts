@@ -20,9 +20,10 @@ imageProc.get(
 		);
 
 		if (await checkCache(thumbPath)) {
-			console.log('Serving cached File!');
+			console.log('Serving cached file!');
 			res.sendFile(thumbPath);
 		} else {
+			console.log('Attempting to resize and cache file!');
 			await imgSharp(imgPath, thumbPath, width, height);
 			res.sendFile(thumbPath);
 		}

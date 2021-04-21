@@ -40,41 +40,33 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
-var sharp_1 = __importDefault(require("sharp"));
-var fs_1 = __importDefault(require("fs"));
 var path_1 = __importDefault(require("path"));
+var checkCache_1 = __importDefault(require("./utilities/checkCache"));
+var imgSharp_1 = __importDefault(require("./utilities/imgSharp"));
 var imageProc = express_1.default.Router();
 imageProc.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var name, width, height, filePath, err_1;
+    var imgPath, thumbPath, width, height;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                name = req.query.name;
-                width = parseInt(req.query.width);
-                height = parseInt(req.query.height);
-                console.log("Resizing Image " + name + " to " + width + "px x " + height + "px");
-                if (!fs_1.default.existsSync("./assets/thumb/" + name)) return [3 /*break*/, 1];
-                console.log('File already cached!');
-                //send image
-                res.sendFile(path_1.default.resolve("assets/thumb/" + name));
-                return [3 /*break*/, 4];
+                imgPath = path_1.default.resolve("assets/full/" + req.query.name);
+                thumbPath = path_1.default.resolve("assets/thumb/" + req.query.name);
+                width = req.query.width;
+                height = req.query.height;
+                console.log("Processing Image " + req.query.name + " to " + req.query.width + "px x " + req.query.height + "px");
+                return [4 /*yield*/, checkCache_1.default(thumbPath)];
             case 1:
-                _a.trys.push([1, 3, , 4]);
-                filePath = "./assets/full/" + name;
-                return [4 /*yield*/, sharp_1.default(filePath)
-                        .resize(width, height)
-                        .toFile("./assets/thumb/" + name)];
+                if (!_a.sent()) return [3 /*break*/, 2];
+                console.log('Serving cached file!');
+                res.sendFile(thumbPath);
+                return [3 /*break*/, 4];
             case 2:
-                _a.sent();
-                console.log('File Successfully resized and cached');
-                //send image
-                res.sendFile(path_1.default.resolve("assets/thumb/" + name));
-                return [3 /*break*/, 4];
+                console.log('Attempting to resize and cache file!');
+                return [4 /*yield*/, imgSharp_1.default(imgPath, thumbPath, width, height)];
             case 3:
-                err_1 = _a.sent();
-                console.log(err_1);
-                res.send('Failure');
-                return [3 /*break*/, 4];
+                _a.sent();
+                res.sendFile(thumbPath);
+                _a.label = 4;
             case 4: return [2 /*return*/];
         }
     });

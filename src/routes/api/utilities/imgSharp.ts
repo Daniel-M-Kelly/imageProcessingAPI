@@ -12,7 +12,7 @@ const imgSharp = async (
 	const height = parseInt(imgHeight);
 	try {
 		await sharp(imgPath).resize(width, height).toFile(thumbPath);
-		console.log('File Successfully resized and cached');
+		console.log('File Successfully resized and cached!');
 	} catch (err) {
 		console.log(err);
 	}
