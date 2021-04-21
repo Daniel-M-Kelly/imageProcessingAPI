@@ -1,6 +1,7 @@
 import express from 'express';
 import sharp from 'sharp';
 import fs from 'fs';
+import path from 'path';
 
 const imageProc = express.Router();
 
@@ -16,7 +17,7 @@ imageProc.get(
 		if (fs.existsSync(`./assets/thumb/${name}`)) {
 			console.log('File already cached!');
 			//send image
-			res.sendFile(`./assets/thumb/${name}`, { root: __dirname });
+			res.sendFile(path.resolve(`assets/thumb/${name}`));
 		} else {
 			try {
 				const filePath = `./assets/full/${name}`;
@@ -25,7 +26,7 @@ imageProc.get(
 					.toFile(`./assets/thumb/${name}`);
 				console.log('File Successfully resized and cached');
 				//send image
-				res.sendFile(`./assets/thumb/${name}`);
+				res.sendFile(path.resolve(`assets/thumb/${name}`));
 			} catch (err) {
 				console.log(err);
 				res.send('Failure');
