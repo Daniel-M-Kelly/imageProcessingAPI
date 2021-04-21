@@ -30,6 +30,7 @@
   "homepage": "https://github.com/Daniel-M-Kelly/imageProcessingAPI#readme",
   "devDependencies": {
     "@types/jasmine": "^3.6.9",
+    "@types/supertest": "^2.0.11",
     "@types/typescript": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
@@ -42,6 +43,7 @@
     "jasmine-ts": "^0.3.2",
     "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
+    "supertest": "^6.1.3",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
   }
