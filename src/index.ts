@@ -9,9 +9,13 @@ app.listen(port, () => {
 	console.log(`Server started at http://localhost:${port}`);
 });
 
+//Route to confirm server is running
 app.get('/', (req, res) => {
-	res.send('Success')
+	res.send('Server Running');
 });
+
+//API routes
 app.use('/api', routes);
 
+//Export app for testing
 export default app;

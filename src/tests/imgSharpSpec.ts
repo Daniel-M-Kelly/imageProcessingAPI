@@ -3,7 +3,7 @@ import path from 'path';
 import imgSharp from '../routes/api/utilities/imgSharp';
 
 describe('Testing the imgSharp module to ensure it creates a thumbnail of a file.', () => {
-	it('Should create a re-sized file in the thumb directory.', async () => {
+	it('Should create a re-sized file in the thumb directory called TestFile.jpg from the full sized fjord.jpg file. Remove the TestFile once the test is complete.', async () => {
 		await imgSharp(
 			path.resolve('assets/full/fjord.jpg'),
 			path.resolve('assets/thumb/TestFile.jpg'),
