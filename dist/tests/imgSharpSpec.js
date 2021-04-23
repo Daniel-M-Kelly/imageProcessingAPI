@@ -43,7 +43,7 @@ var fs_1 = __importDefault(require("fs"));
 var path_1 = __importDefault(require("path"));
 var imgSharp_1 = __importDefault(require("../routes/api/utilities/imgSharp"));
 describe('Testing the imgSharp module to ensure it creates a thumbnail of a file.', function () {
-    it('Should create a re-sized file in the thumb directory called TestFile.jpg from the full sized fjord.jpg file. Remove the TestFile once the test is complete.', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('Should create a re-sized file in the thumb directory called TestFile.jpg from the full sized fjord.jpg file. Remove the TestFile once the test is complete.', function (done) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, imgSharp_1.default(path_1.default.resolve('assets/full/fjord.jpg'), path_1.default.resolve('assets/thumb/TestFile.jpg'), '200', '200')];
@@ -51,6 +51,7 @@ describe('Testing the imgSharp module to ensure it creates a thumbnail of a file
                     _a.sent();
                     expect(fs_1.default.existsSync(path_1.default.resolve('assets/thumb/TestFile.jpg'))).toBeTrue();
                     fs_1.default.unlinkSync(path_1.default.resolve('assets/thumb/TestFile.jpg'));
+                    done();
                     return [2 /*return*/];
             }
         });
