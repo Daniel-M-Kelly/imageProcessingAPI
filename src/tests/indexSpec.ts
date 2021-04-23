@@ -17,7 +17,7 @@ describe('Check Express Server', () => {
 			'/api/images?name=fjord.jpg&width=200&height=200'
 		);
 		expect(response.status).toBe(200);
-		fs.unlinkSync(path.resolve('assets/thumb/fjord.jpg'));
+		fs.unlinkSync(path.resolve('assets/thumb/200x200fjord.jpg'));
 		done();
 	});
 });

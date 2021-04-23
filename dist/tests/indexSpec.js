@@ -67,7 +67,7 @@ describe('Check Express Server', function () {
                 case 1:
                     response = _a.sent();
                     expect(response.status).toBe(200);
-                    fs_1.default.unlinkSync(path_1.default.resolve('assets/thumb/fjord.jpg'));
+                    fs_1.default.unlinkSync(path_1.default.resolve('assets/thumb/200x200fjord.jpg'));
                     done();
                     return [2 /*return*/];
             }

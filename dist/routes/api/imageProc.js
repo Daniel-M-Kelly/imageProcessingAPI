@@ -45,14 +45,14 @@ var checkCache_1 = __importDefault(require("./utilities/checkCache"));
 var imgSharp_1 = __importDefault(require("./utilities/imgSharp"));
 var imageProc = express_1.default.Router();
 imageProc.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var imgPath, thumbPath, width, height;
+    var width, height, imgPath, thumbPath;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                imgPath = path_1.default.resolve("assets/full/" + req.query.name);
-                thumbPath = path_1.default.resolve("assets/thumb/" + req.query.name);
                 width = req.query.width;
                 height = req.query.height;
+                imgPath = path_1.default.resolve("assets/full/" + req.query.name);
+                thumbPath = path_1.default.resolve("assets/thumb/" + width + "x" + height + req.query.name);
                 return [4 /*yield*/, checkCache_1.default(thumbPath)];
             case 1:
                 if (!_a.sent()) return [3 /*break*/, 2];
