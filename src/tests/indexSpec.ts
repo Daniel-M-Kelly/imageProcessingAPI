@@ -7,15 +7,17 @@ import path from 'path';
 const request = supertest(app);
 
 describe('Check Express Server', () => {
-	it('Check if server is running, should return 200 status', async () => {
+	it('Check if server is running, should return 200 status', async (done) => {
 		const response = await request.get('/');
 		expect(response.status).toBe(200);
+		done();
 	});
-	it('Test if images route is working with fjord.jpg file, should return 200 status', async () => {
+	it('Test if images route is working with fjord.jpg file, should return 200 status', async (done) => {
 		const response = await request.get(
 			'/api/images?name=fjord.jpg&width=200&height=200'
 		);
 		expect(response.status).toBe(200);
 		fs.unlinkSync(path.resolve('assets/thumb/fjord.jpg'));
+		done();
 	});
 });

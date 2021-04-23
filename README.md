@@ -38,3 +38,4 @@
 
 ## Well-Formated, linted code
 * Prettier and lint run without error.
+* esLint has the Prettier plug-in configiured so prettier runs with the 'npm run lint' script, however, i've added a separate script to the package.json to run prettier separately - 'npm run prettier'
